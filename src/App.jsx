@@ -1,7 +1,11 @@
 import './App.css'
+import getGeoLocation from './lib/get-user-location'
 
 function App() {
-  return <div>Coffee Chaser</div>
+  const location = getGeoLocation()
+  return (
+    <div>Coffee Chaser</div>
+  )
 }
 
 export default App
