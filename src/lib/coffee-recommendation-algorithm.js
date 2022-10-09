@@ -8,7 +8,7 @@ function getCoffee (selectedMoods, temperature) {
     if(temperature < 10) {
         result += "hot "  
     } else if (temperature >= 17) {
-        result += "cold "
+        result += "iced "
     }
 
     // Calculate the total score
@@ -21,16 +21,23 @@ function getCoffee (selectedMoods, temperature) {
 
     // Pick up cofee.
     maxValue = total[0]
-    maxIndex = 0
+    maxIndexs = [0]
+
     for(i = 0; i < total.length; i++) {
-        if(total[i] >= maxValue) {
+        if(total[i] > maxValue) {
             maxValue = total[i]
-            maxIndex = i
+            maxIndexs = []
+            maxIndexs.push(i);
+        } else if (total[i] == maxValue) {
+            maxIndexs.push(i);
         }
     }
-    result += coffees[maxIndex].name
-
-    return result
+    
+    if(maxIndex.length == 1) {
+        result += coffees[maxIndex[0]].name
+    } else {
+        result += coffees[Math.floor(Math.random() * strArray.length)].name
+    }
 }
 
 export default getCoffee
