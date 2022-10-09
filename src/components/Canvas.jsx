@@ -5,8 +5,8 @@ import Weathers from '../lib/constants/weathers'
 function Canvas(props) {
   const { weather } = props
   const canvasRef = useRef(null)
-  const [backgroundColor, setBackgronudColor] = useState('#FFFFFF')
-  const numberOfParticles = 30
+  const [backgroundColor, setBackgroundColor] = useState('#FFFFFF')
+  const numberOfParticles = 10
   const canvasWidth = window.innerWidth
   const canvasHeight = window.innerHeight
 
@@ -15,8 +15,16 @@ function Canvas(props) {
     canvas.width = canvasWidth
     canvas.height = canvasHeight
     const context = canvas.getContext('2d')
-    if (weather === Weathers.RAIN) {
-      setBackgronudColor('#D5E7F6')
+
+    switch (weather) {
+      case Weathers.RAIN:
+        setBackgroundColor('#D5E7F6')
+        break
+      case Weathers.SNOW:
+        setBackgroundColor('#D0D1E1')
+        break
+      default:
+        break
     }
 
     document.body.style.backgroundColor = backgroundColor

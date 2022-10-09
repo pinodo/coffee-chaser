@@ -1,4 +1,5 @@
 import Rain from '../Particles/Rain'
+import Snow from '../Particles/Snow'
 import Weathers from './constants/weathers'
 
 export default function createParticleArray(numberOfParticles, context, weather) {
@@ -6,6 +7,9 @@ export default function createParticleArray(numberOfParticles, context, weather)
   switch (weather) {
     case Weathers.RAIN:
       constructor = Rain
+      break
+    case Weathers.SNOW:
+      constructor = Snow
       break
     default:
       break
