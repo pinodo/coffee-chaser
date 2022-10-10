@@ -1,22 +1,22 @@
 const coffees = [
   {
-    id: 1,
+    id: 0,
     name: 'caramel macchiato'
   },
   {
-    id: 2,
+    id: 1,
     name: 'vanilla latte'
   },
   {
-    id: 3,
+    id: 2,
     name: 'espresso'
   },
   {
-    id: 4,
+    id: 3,
     name: 'flat white'
   },
   {
-    id: 5,
+    id: 4,
     name: 'mocha'
   }
 ]
