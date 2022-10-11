@@ -1,14 +1,18 @@
-import axios from "axios";
-import useCurrentLocation from "./useCurrentLocation";
+import { useState } from "react"
+import axios from "axios"
+import useCurrentLocation from "./useCurrentLocation"
 
-const location = useCurrentLocation();
-const url = `https://api.openweathermap.org/data/2.5/weather?q=vancouver&appid=7abb5ef3fd250b9d88cab04bbe6b63d1`;
-const data = {};
+const getWeatherInfo = () => {
+  const [data, setData] = useState()
 
-function fetchingData() {
+  const { location } = useCurrentLocation()
+  const lat = location?.latitude
+  const lng = location?.longitude
+  const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=7abb5ef3fd250b9d88cab04bbe6b63d1`
   axios.get(url).then((res) => {
-    data = res.data;
-  });
-  console.log(data);
-  return data;
+    setData(res.data)
+  })
+  return data
 }
+
+export default getWeatherInfo
