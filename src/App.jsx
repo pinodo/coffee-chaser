@@ -3,7 +3,7 @@ import Canvas from './components/Canvas'
 import Weathers from './lib/constants/weathers'
 
 function App() {
-  const weather = Weathers.SNOW
+  const weather = Weathers.CLOUDY
   return <Canvas weather={weather} />
 }
 
