@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+
+#canvas {
+  position: absolute;
+}
+
+.layout {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
