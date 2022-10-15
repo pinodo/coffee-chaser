@@ -1,6 +1,8 @@
 import React, { useRef, useEffect, useState } from 'react'
 import createParticleArray from '../lib/createParticleArray'
 import Weathers from '../lib/constants/weathers'
+import createRayArray from '../lib/createRayArray'
+import drawSunCore from '../lib/drawSunCore'
 
 function Canvas({ temperature, mainWeather }) {
   const canvasRef = useRef(null)
@@ -25,6 +27,9 @@ function Canvas({ temperature, mainWeather }) {
       case Weathers.SUNNY:
         setBackgroundColor('#F1EAE6')
         break
+      case Weathers.CLOUDY:
+        setBackgroundColor('#E4E4E2')
+        break
       default:
         setBackgroundColor('yellow')
         break
@@ -32,12 +37,25 @@ function Canvas({ temperature, mainWeather }) {
 
     document.body.style.backgroundColor = backgroundColor
 
-    const particleArray = createParticleArray(numberOfParticles, context, mainWeather)
+    let particleArray
+    let rayArray
+    if (mainWeather !== Weathers.SUNNY) {
+      particleArray = createParticleArray(numberOfParticles, context, mainWeather)
+    } else {
+      rayArray = createRayArray(context)
+    }
 
     function animate() {
-      context.clearRect(0, 0, canvasWidth, canvasHeight)
-      for (const element of particleArray) {
-        element.update()
+      if (mainWeather === Weathers.SUNNY) {
+        drawSunCore(context)
+        for (const ray of rayArray) {
+          ray.update()
+        }
+      } else {
+        context.clearRect(0, 0, canvasWidth, canvasHeight)
+        for (const element of particleArray) {
+          element.update()
+        }
       }
       requestAnimationFrame(animate)
     }

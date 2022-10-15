@@ -1,7 +1,6 @@
 import Cloudy from '../Particles/Cloudy'
 import Rain from '../Particles/Rain'
 import Snow from '../Particles/Snow'
-import Sunny from '../Particles/Sunny'
 import Weathers from './constants/weathers'
 
 export default function createParticleArray(numberOfParticles, context, weather) {
@@ -15,9 +14,6 @@ export default function createParticleArray(numberOfParticles, context, weather)
       break
     case Weathers.CLOUDY:
       constructor = Cloudy
-      break
-    case Weathers.SUNNY:
-      constructor = Sunny
       break
     default:
       break
