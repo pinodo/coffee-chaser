@@ -2,8 +2,7 @@ import React, { useRef, useEffect, useState } from 'react'
 import createParticleArray from '../lib/createParticleArray'
 import Weathers from '../lib/constants/weathers'
 
-function Canvas(props) {
-  const { weather } = props
+function Canvas({ temperature, mainWeather }) {
   const canvasRef = useRef(null)
   const [backgroundColor, setBackgroundColor] = useState('#FFFFFF')
   const numberOfParticles = 10
@@ -16,7 +15,7 @@ function Canvas(props) {
     canvas.height = canvasHeight
     const context = canvas.getContext('2d')
 
-    switch (weather) {
+    switch (mainWeather) {
       case Weathers.RAIN:
         setBackgroundColor('#D5E7F6')
         break
@@ -24,12 +23,13 @@ function Canvas(props) {
         setBackgroundColor('#D0D1E1')
         break
       default:
+        setBackgroundColor('yellow')
         break
     }
 
     document.body.style.backgroundColor = backgroundColor
 
-    const particleArray = createParticleArray(numberOfParticles, context, weather)
+    const particleArray = createParticleArray(numberOfParticles, context, mainWeather)
 
     function animate() {
       context.clearRect(0, 0, canvasWidth, canvasHeight)
@@ -41,6 +41,6 @@ function Canvas(props) {
     animate()
   }, [backgroundColor])
 
-  return <canvas ref={canvasRef} {...props} />
+  return <canvas ref={canvasRef} />
 }
 export default Canvas
