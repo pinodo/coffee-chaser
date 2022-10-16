@@ -18,10 +18,11 @@ export default function createParticleArray(numberOfParticles, context, weather)
     default:
       break
   }
-
   const particleArray = []
-  for (let i = 0; i < numberOfParticles; i++) {
-    particleArray.push(new constructor(context))
+  if (typeof constructor !== 'undefined') {
+    for (let i = 0; i < numberOfParticles; i++) {
+      particleArray.push(new constructor(context))
+    }
   }
   return particleArray
 }
