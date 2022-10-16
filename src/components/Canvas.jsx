@@ -22,6 +22,9 @@ function Canvas({ temperature, mainWeather }) {
       case Weathers.SNOW:
         setBackgroundColor('#D0D1E1')
         break
+      case Weathers.SUNNY:
+        setBackgroundColor('#F1EAE6')
+        break
       default:
         setBackgroundColor('yellow')
         break
