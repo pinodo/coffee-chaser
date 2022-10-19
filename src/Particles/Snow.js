@@ -107,7 +107,7 @@ class Snow {
   }
 
   update() {
-    if (this.y > window.innerHeight) {
+    if (this.y > window.innerHeight + this.length) {
       this.y = this.length * -1
       this.x = Math.random() * window.innerWidth
     }

@@ -1,5 +1,5 @@
-import axios from "axios"
-import useCurrentLocation from "./useCurrentLocation"
+import axios from 'axios'
+import useCurrentLocation from './useCurrentLocation'
 
 async function useWeatherInfo() {
   const location = await useCurrentLocation()
